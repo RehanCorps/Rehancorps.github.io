@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rehan - Web Developer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Sansation&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      margin: 5px;
+      font-family: 'josefin sans', 'sansation', sans-serif;
+      background: #000;
+      color: #ead5d5;
+      overflow-x: hidden;
+      position: relative;
+      padding-top: -10px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      background: transparent;
+      font-size: 20px;
+      padding: 0 30px;
+      margin-bottom: -10px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 3rem;
+      list-style: none;
+      background: transparent;
+    }
+
+    nav ul li a {
+      position: relative;
+      text-decoration: none;
+      color: rgb(250, 237, 237);
+      padding: 4px 0;
+    }
+
+    nav ul li a::after {
+      content: '';
+      background: transparent;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 0;
+      background-color: cyan;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: cyan;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+
+
+
+    .header {
+      text-align: left;
+      left: 140px;
+      margin-top: -10px;
+      bottom: -50px;
+      padding: 100px 20px 50px;
+      position: relative;
+      z-index: 1;
+      font-size: 20px;
+    }
+
+
+
+    .intro h2 span {
+      color: cyan;
+      font-weight: lighter;
+      text-shadow: 0 0 8px cyan;
+      font-size: 50px;
+      font-weight: bold;
+    }
+
+    .intro h2 {
+      font-size: 45px;
+      color: white;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    .intro h3 {
+      font-size: 20px;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .intro p {
+      font-size: 15px;
+      color: white;
+      max-width: 500px;
+      line-height: 1.6;
+      margin-bottom: 0px;
+    }
+
+    .section {
+      margin-top: 70px;
+      padding: 50px 20px;
+      position: relative;
+      z-index: 1;
+      color: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 40px;
+      margin-bottom: 30px;
+      text-shadow: 0 0 10px cyan;
+    }
+
+    .skills-container,
+    .projects-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .skill,
+    .project {
+      background: transparent;
+      border: 1px solid cyan;
+      border-radius: 60px;
+      padding: 15px 25px;
+      font-size: 18px;
+      width: 200px;
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      color: #f5f5f5;
+      text-align: center;
+      text-shadow: 0 0 5px #999;
+    }
+
+    .skill:hover,
+    .project:hover {
+      background: rgba(0, 255, 255, 0.1);
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 0 20px cyan, 0 0 30px cyan;
+      text-shadow: 0 0 10px white;
+    }
+
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 1;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      background: #1a1a1a;
+      color: #faf8f8;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      text-shadow: 0 0 5px #666;
+    }
+
+    .contact-form input {
+      background: #222;
+      box-shadow: 0 0 5px rgb(255, 255, 255);
+      outline-offset: 3px;
+      outline-color: cyan;
+    }
+
+    .contact-form textarea {
+      background: #222;
+      box-shadow: 0 0 5px rgb(255, 255, 255);
+      height: 70px;
+      outline-color: cyan;
+    }
+
+    .contact-form button {
+      padding: 10px;
+      background: rgb(64, 150, 163);
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      text-shadow: 0 0 5px #fff;
+      font-size: 20px;
+      height: 45px;
+    }
+
+    .contact-form button:hover {
+      background: rgb(64, 150, 163);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 0 10px rgb(64, 150, 163), 0 0 10px rgb(64, 150, 163);
+      text-shadow: 0 0 10px white;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: flex-start;
+      gap: 40px;
+      z-index: 10;
+      margin-top: 0px;
+      position: relative;
+    }
+
+    .buttons .btn {
+      padding: 10px 20px;
+      background: rgb(64, 150, 163);
+      position: relative;
+      color: white;
+      text-decoration: none;
+      border-radius: 300px;
+      transition: 0.3s ease;
+      text-shadow: 0 0 8px rgb(64, 150, 163);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      pointer-events: all;
+    }
+
+    .buttons :hover {
+      background: rgb(64, 150, 163);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 0 10px rgb(64, 150, 163), 0 0 10px rgb(64, 150, 163);
+    }
+
+    .icon-container {
+      display: flex;
+      justify-content: flex-start;
+      transform: translateX(35px);
+      gap: 40px;
+      margin: 30px 0;
+    }
+
+    .icon {
+      font-size: 30px;
+      color: #ffffff;
+      text-decoration: none;
+      gap: 100px;
+      transition: transform 0.3s ease, text-shadow 0.3s ease;
+      text-shadow: 0 0 8px #00ffff;
+      margin-left: 2%;
+    }
+
+    .icon:hover {
+      transform: scale(1.4);
+      text-shadow: 0 0 15px cyan, 0 0 25px cyan;
+      color: #00ffff;
+    }
+
+    .logo-wrapper {
+      position: fixed;
+      top: -20px;
+      left: 20px;
+      z-index: 1000;
+    }
+
+    .glow-logo {
+      width: 100px;
+      height: auto;
+      filter: drop-shadow(0 0 15px rgb(243, 247, 247));
+      animation: glowAnim 2s infinite alternate;
+    }
+
+    @keyframes glowAnim {
+      from {
+        filter: drop-shadow(0 0 10px #f2f5f5);
+      }
+
+      to {
+        filter: drop-shadow(0 0 25px #ecf0f0);
+      }
+    }
+
+    .logo-wrapper img {
+      height: 200px;
+      filter: drop-shadow(0 0 10px #f1f5f5) drop-shadow(0 0 20px #07f7f7);
+      ;
+    }
+
+    .image-glow-container {
+      position: absolute;
+      top: 120px;
+      right: 400px;
+      z-index: 1;
+      animation: floatImage 6s ease-in-out infinite;
+    }
+
+    .glow-image {
+      width: 300px;
+      height: auto;
+      border-radius: 90%;
+      background-color: cyan;
+      box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
+      transition: transform 0.5s ease;
+      margin-left: 55%;
+    }
+
+    .glow-image:hover {
+      transform: scale(1.09);
+      box-shadow: 0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #0ff;
+    }
+
+    @keyframes floatImage {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .image-glow-container {
+        position: static;
+        margin-top: 50px;
+        text-align: center;
+      }
+
+      .glow-image {
+        width: 10px;
+      }
+    }
+
+    .slider-wrapper {
+      position: relative;
+      width: 100%;
+      height: 500%;
+      margin-top: 100px;
+      z-index: 10;
+    }
+
+    .slider {
+      display: flex;
+      gap: 90px;
+      transition: none;
+      height: 500%;
+      will-change: transform;
+    }
+
+    .card {
+      min-width: 300px;
+      height: 300px;
+      background: transparent;
+      border-radius: 10px;
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-title {
+      margin-bottom: 0px;
+      font-size: 30px;
+      text-align: center;
+      color: cyan;
+      text-shadow: cyan 0 0 10px;
+    }
+
+    .card img {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+      object-position: 80% 50%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      transform: translateY(-5px) scale(1.15);
+      z-index: 1;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+
+    #typed {
+      color: cyan;
+      font-weight: bold;
+      font-size: 40px;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: transparent;
+      color: cyan;
+      text-align: right;
+      padding: 1rem 0;
+      font-size: 11px;
+
+    }
+
+   .slide-in-left {
+      opacity: 0;
+      transform: translateX(-100px);
+      transition: all 0.8s ease-out;
+    }
+   .slide-in-right {
+      opacity: 0;
+      transform: translateX(-100px);
+      transition: all 0.8s ease-out;
+    }
+
+    .slide-in-bottom {
+      opacity: 0;
+      transform: translateY(80px);
+      transition: all 0.8s ease-out;
+    }
+
+    .visible {
+      opacity: 1 !important;
+      transform: translateX(0) translateY(0) !important;
+    }
+  </style>
+</head>
+<nav>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<body>
+  <div id="particles-js"></div>
+  <header class="header">
+    <div class="logo-wrapper slide-in-bottom">
+      <div class="glow"></div>
+      <img src="images/New folder/EHNOVA (2).png" alt="My logo" height="200">
+    </div>
+    <div class="image-glow-container slide-in-bottom">
+      <img style="opacity: 0;
+      transform: translateY(90px);
+      transition: all 0.8s ease-out;" src="images/New folder/Untitled design (3).png" alt="Glowing Rehan" class="glow-image slide-in-bottom">
+    </div>
+    <div class="intro slide-in-left">
+      <h2>Hi, It's <span>REHAN</span></h2>
+      <h1>I'm a <span id="typed"></span></h1>
+      <p>An AI Automation expert and SaaS builder, making AI-powered lead generation tools, chatbots, and small
+        automations to help businesses grow.My focus is on simple, effective solutions that save time and drive results.
+        Let's work together to automate your success. </p>
+    </div>
+    <div class="icon-container slide-in-left">
+      <a href="mailto:you@example.com" class="icon"><i class="fas fa-envelope"></i></a>
+      <a href="https://instagram.com/yourprofile" target="_blank" class="icon"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/923425040554" class="icon"><i class="fas fa-phone"></i></a>
+    </div>
+    <div class="buttons slide-in-left">
+      <a href="#contact" class="btn">Hire Me</a>
+      <a href="#projects" class="btn">Projects</a>
+    </div>
+    </div>
+  </header>
+  <section id="Education" class="section slide-in-left">
+    <h2 class="section-title slide-in-left">Education</h2>
+    <div
+      style="display: flex; flex-direction: column; gap: 20px; align-items: center; max-width: 700px; margin: 0 auto;">
+      <div
+        style="border: 1px solid cyan; border-radius: 20px; padding: 15px; width: 50%; backdrop-filter: blur(4px); background: rgba(0, 255, 255, 0.05);">
+        <h3 style="margin: 0; color: #00ffff; text-shadow: 0 0 5px cyan;">Diploma in ML and Deep leaning</h3>
+        <p>PEC initiative</p>
+        <p style="font-size: 14px; color: #ccc;">2023 - 2024</p>
+      </div>
+      <div
+        style="border: 1px solid cyan; border-radius: 20px; padding: 15px; width: 50%; backdrop-filter: blur(4px); background: rgba(0, 255, 255, 0.05);">
+        <h3 style="margin: 0; color: #00ffff; text-shadow: 0 0 5px cyan;">Diploma of AI In Marketing</h3>
+        <p>PEC initiative</p>
+        <p style="font-size: 14px; color: #ccc;">2023 - 2024</p>
+      </div>
+      <div
+        style="border: 1px solid cyan; border-radius: 20px; padding: 15px; width: 50%; backdrop-filter: blur(4px); background: rgba(0, 255, 255, 0.05);">
+        <h3 style="margin: 0; color: #00ffff; text-shadow: 0 0 5px cyan;">Diploma in Data analysis</h3>
+        <p>PEC initiative</p>
+        <p style="font-size: 14px; color: #ccc;">2022 - 2023</p>
+      </div>
+      <div
+        style="border: 1px solid cyan; border-radius: 20px; padding: 15px; width: 50%; backdrop-filter: blur(4px); background: rgba(0, 255, 255, 0.05);">
+        <h3 style="margin: 0; color: #00ffff; text-shadow: 0 0 5px cyan;">Intermediate in Pre-Engineering</h3>
+        <p>Punjab College Jand</p>
+        <p style="font-size: 14px; color: #ccc;">2022 - 2023</p>
+      </div>
+    </div>
+  </section>
+  <section id="skills" class="section">
+    <h2 class="section-title">Skills</h2>
+    <div class="slider-wrapper">
+      <div class="slider" id="track">
+        <div class="card">
+          <h3 class="card-title">AI Automation</h3>
+          <img src="images/Untitled design (18).png" alt="Card Image" class="card-image" />
+        </div>
+        <div class="card">
+          <h3 class="card-title">Chatbots Development</h3>
+          <img src="images/Untitled design (5).png" alt="Card Image" class="card-image" />
+        </div>
+        <div class="card">
+          <h3 class="card-title">Lead Generation Automation</h3>
+          <img src="images/Untitled design (10).png" alt="Card Image" class="card-image" />
+        </div>
+        <div class="card">
+          <h3 class="card-title">SaaS Workflow Automation</h3>
+          <img src="images/Untitled design (16).png" alt="Card Image" class="card-image" />
+        </div>
+        <div class="card">
+          <h3 class="card-title">Web Development</h3>
+          <img src="images/Untitled design (15).png" alt="Card Image" class="card-image" />
+        </div>
+        <div class="card">
+          <h3 class="card-title">Maths Expert</h3>
+          <img src="images/Untitled design (17).png" alt="Card Image" class="card-image" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="projects" class="section slide-in-right">
+    <h2 class="section-title slide-in-right">Projects</h2>
+    <div class="projects-container slide-in-right">
+      <div class="project slide-in-right">Portfolio Website</div>
+      <div class="project slide-in-right">E-commerce Store</div>
+      <div class="project slide-in-right">Blog Platform</div>
+    </div>
+  </section>
+  <section id="contact" class="section slide-in-bottom">
+    <h2 class="section-title slide-in-bottom">Contact<span style="color: cyan;"> Me</h2>
+    <form class="contact-form slide-in-bottom">
+      <input type="text" placeholder="Full Name">
+      <input type="email" placeholder="Email">
+      <input type="text" placeholder="Phone Number">
+      <input type="text" placeholder="Subject">
+      <textarea placeholder="Your Message"></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: {
+          value: 80,
+          density: { enable: true, value_area: 800 }
+        },
+        color: { value: "#00ffff" },
+        shape: {
+          type: "circle",
+          stroke: { width: 0, color: "#00ffff" },
+          polygon: { nb_sides: 5 }
+        },
+        opacity: { value: 0.5, random: false, anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false } },
+        size: { value: 3, random: true, anim: { enable: false, speed: 40, size_min: 0.1, sync: false } },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#00ffff",
+          opacity: 0.5,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 0.7,
+          direction: "none",
+          random: false,
+          straight: false,
+          out_mode: "out",
+          bounce: false
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          repulse: { distance: 80, duration: 0.4 },
+          push: { particles_nb: 9 }
+        }
+      },
+      retina_detect: true
+    })
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const track = document.getElementById('track');
+      const cards = Array.from(track.children);
+      const cardWidth = cards[0].offsetWidth + 30; // include margin/gap
+      cards.forEach(card => {
+        const clone = card.cloneNode(true);
+        track.appendChild(clone);
+      });
+      let position = 0;
+      const animate = () => {
+        position -= 1.5; // adjust speed here
+        if (Math.abs(position) >= cardWidth * cards.length) {
+          position = 0; // reset to beginning
+        }
+        track.style.transform = `translateX(${position}px)`;
+        requestAnimationFrame(animate);
+      };
+      animate();
+    });
+  </script>
+  <script>document.addEventListener('DOMContentLoaded', () => {
+      const track = document.getElementById('track');
+      const cards = Array.from(track.children);
+      const cardWidth = cards[0].offsetWidth + 30; // width + gap
+      cards.forEach(card => {
+        const clone = card.cloneNode(true);
+        track.appendChild(clone);
+      });
+      let position = 0;
+      const animate = () => {
+        position -= 2; // Adjust speed
+        if (Math.abs(position) >= cardWidth * cards.length) {
+          position = 0; // Reset to start
+        }
+        track.style.transform = `translateX(${position}px)`;
+        requestAnimationFrame(animate);
+      };
+      animate();
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script>
+    var typed = new Typed("#typed", {
+      strings: ["Web Developer", "Designer"],
+      typeSpeed: 60,
+      backSpeed: 40,
+      loop: true,
+    });
+  </script>
+  <script>
+   const slideElements = document.querySelectorAll('.slide-in-left, .slide-in-bottom, .slide-in-right');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible'); // 👈 This line resets the animation
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    slideElements.forEach(el => observer.observe(el));
+
+  </script>
+</body>
+<footer class="footer">
+  &copy; 2025 RehanCorps. All rights reserved.
+</footer>
+
+</html>
