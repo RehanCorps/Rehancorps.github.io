@@ -556,13 +556,14 @@ border-radius: 2vw;
   </section>
   <section id="contact" class="section slide-in-bottom">
     <h2 class="section-title slide-in-bottom">Contact<span style="color: cyan;"> Me</h2>
-    <form class="contact-form slide-in-bottom">
+    <form action="https://formspree.io/f/manoblnb" method="POST" class="contact-form slide-in-bottom">
       <input type="text" placeholder="Full Name">
       <input type="email" placeholder="Email">
       <input type="text" placeholder="Phone Number">
       <input type="text" placeholder="Subject">
       <textarea placeholder="Your Message"></textarea>
       <button type="submit" class="btn">Send Message</button>
+      <input type="hidden" name="_redirect" value="https://yourdomain.com/thank-you.html">
     </form>
   </section>
   <script>
