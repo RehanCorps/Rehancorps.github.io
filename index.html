@@ -15,13 +15,13 @@
     rel="stylesheet">
   <style>
     body {
-      margin: 5px;
+      margin: 2%;
       font-family: 'josefin sans', 'sansation', sans-serif;
       background: #000;
       color: #ead5d5;
       overflow-x: hidden;
       position: relative;
-      padding-top: -10px;
+      padding-top: -2vh;
     }
 
    html {
@@ -33,8 +33,8 @@
       justify-content: flex-end;
       background: transparent;
       font-size: 20px;
-      padding: 0 30px;
-      margin-bottom: -10px;
+      padding: 0 3vh;
+      margin-bottom: -2vh;
     }
 
     nav ul {
@@ -48,7 +48,7 @@
       position: relative;
       text-decoration: none;
       color: rgb(250, 237, 237);
-      padding: 4px 0;
+      padding: 0.5vh 0;
     }
 
     nav ul li a::after {
@@ -57,7 +57,7 @@
       position: absolute;
       left: 0;
       bottom: 0;
-      height: 2px;
+      height: 0.15vh;
       width: 0;
       background-color: cyan;
       transition: width 0.3s ease;
@@ -76,10 +76,10 @@
 
     .header {
       text-align: left;
-      left: 140px;
-      margin-top: -10px;
-      bottom: -50px;
-      padding: 100px 20px 50px;
+      left: 10vw;
+      margin-top: -1vh;
+      bottom: -5vh;
+      padding: 10vh 2vw 5vh;
       position: relative;
       z-index: 1;
       font-size: 20px;
@@ -98,28 +98,29 @@
     .intro h2 {
       font-size: 45px;
       color: white;
-      line-height: 1.5;
+      line-height: 1.5vw;
       margin-bottom: 0;
     }
 
     .intro h3 {
       font-size: 20px;
       color: white;
-      margin-bottom: 10px;
+      margin-bottom: 2vh;
     }
 
     .intro p {
       font-size: 15px;
       color: white;
-      max-width: 500px;
-      line-height: 1.6;
-      margin-bottom: 0px;
+      max-width: 80vw;
+line-height: 5vw;
+margin-bottom: 1vh;
+
     }
 
     .section {
-      margin-top: 70px;
-      padding: 50px 20px;
-      position: relative;
+     margin-top: 7vh;
+padding: 5vh 2vw;
+position: relative;
       z-index: 1;
       color: white;
     }
@@ -127,7 +128,7 @@
     .section-title {
       text-align: center;
       font-size: 40px;
-      margin-bottom: 30px;
+      margin-bottom: 3vh;
       text-shadow: 0 0 10px cyan;
     }
 
@@ -136,17 +137,17 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 30px;
+      gap: 3vh;
     }
 
     .skill,
     .project {
       background: transparent;
-      border: 1px solid cyan;
-      border-radius: 60px;
-      padding: 15px 25px;
-      font-size: 18px;
-      width: 200px;
+      border: 0.1vw solid cyan;
+border-radius: 5vw;
+padding: 2vh 3vw;
+font-size: 4vw;
+width: 20vw;
       transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
       color: #f5f5f5;
@@ -164,19 +165,19 @@
     }
 
     .contact-form {
-      max-width: 500px;
+     max-width: 80vw;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      z-index: 1;
+      gap: 2vh;
+z-index: 1;
     }
 
     .contact-form input,
     .contact-form textarea {
-      padding: 10px;
-      border: none;
-      border-radius: 10px;
+      padding: 1vh;
+border: none;
+border-radius: 2vw;
       background: #1a1a1a;
       color: #faf8f8;
       transition: background 0.3s ease, box-shadow 0.3s ease;
@@ -193,23 +194,22 @@
     .contact-form textarea {
       background: #222;
       box-shadow: 0 0 5px rgb(255, 255, 255);
-      height: 70px;
+     height: 7vh;
       outline-color: cyan;
     }
 
     .contact-form button {
-      padding: 10px;
       background: rgb(64, 150, 163);
       border: none;
       color: white;
-      border-radius: 5px;
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
       text-shadow: 0 0 5px #fff;
       font-size: 20px;
-      height: 45px;
+     border-radius: 1vw;
+height: 5vh;
+padding: 1vh;
     }
-
     .contact-form button:hover {
       background: rgb(64, 150, 163);
       transform: translateY(-5px) scale(1.05);
@@ -220,19 +220,20 @@
     .buttons {
       display: flex;
       justify-content: flex-start;
-      gap: 40px;
-      z-index: 10;
-      margin-top: 0px;
-      position: relative;
+     gap: 4vh;
+z-index: 10; 
+margin-top: 1vh;
+position: relative;
+
     }
 
     .buttons .btn {
-      padding: 10px 20px;
       background: rgb(64, 150, 163);
       position: relative;
       color: white;
       text-decoration: none;
-      border-radius: 300px;
+     border-radius: 15vw;
+padding: 2vh 3vw;
       transition: 0.3s ease;
       text-shadow: 0 0 8px rgb(64, 150, 163);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -250,18 +251,18 @@
       display: flex;
       justify-content: flex-start;
       transform: translateX(35px);
-      gap: 40px;
-      margin: 30px 0;
+     gap: 4vh;
+margin: 3vh 0;
     }
 
     .icon {
       font-size: 30px;
       color: #ffffff;
       text-decoration: none;
-      gap: 100px;
-      transition: transform 0.3s ease, text-shadow 0.3s ease;
-      text-shadow: 0 0 8px #00ffff;
-      margin-left: 2%;
+      gap: 10vw;
+transition: transform 0.3s ease, text-shadow 0.3s ease;
+text-shadow: 0 0 1vw #00ffff;
+margin-left: 2%;
     }
 
     .icon:hover {
@@ -272,13 +273,13 @@
 
     .logo-wrapper {
       position: fixed;
-      top: -20px;
-      left: 20px;
-      z-index: 1000;
+top: -2vh;
+left: 2vw;
+z-index: 1000;
     }
 
     .glow-logo {
-      width: 100px;
+      width: 10vw;
       height: auto;
       filter: drop-shadow(0 0 15px rgb(243, 247, 247));
       animation: glowAnim 2s infinite alternate;
@@ -295,27 +296,27 @@
     }
 
     .logo-wrapper img {
-      height: 200px;
+      height: 20vh;
       filter: drop-shadow(0 0 10px #f1f5f5) drop-shadow(0 0 20px #07f7f7);
       ;
     }
 
     .image-glow-container {
       position: absolute;
-      top: 120px;
-      right: 400px;
+top: 12vh;
+right: 40vw;
       z-index: 1;
       animation: floatImage 6s ease-in-out infinite;
     }
 
     .glow-image {
-      width: 300px;
       height: auto;
       border-radius: 90%;
       background-color: cyan;
       box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
       transition: transform 0.5s ease;
-      margin-left: 55%;
+      width: 30vw;
+margin-left: 50%;
     }
 
     .glow-image:hover {
@@ -338,12 +339,12 @@
     @media (max-width: 768px) {
       .image-glow-container {
         position: static;
-        margin-top: 50px;
+        margin-top: 5vh;
         text-align: center;
       }
 
       .glow-image {
-        width: 10px;
+        width: 1vw;
       }
     }
 
@@ -351,28 +352,28 @@
       position: relative;
       width: 100%;
       height: 500%;
-      margin-top: 100px;
+      margin-top: 10vh;
       z-index: 10;
     }
 
     .slider {
       display: flex;
-      gap: 90px;
+      gap: 8vw;
       transition: none;
       height: 500%;
       will-change: transform;
     }
 
     .card {
-      min-width: 300px;
-      height: 300px;
-      background: transparent;
-      border-radius: 10px;
+      min-width: 30vw;
+height: 30vh;
+background: transparent;
+border-radius: 2vw;
       transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
     }
 
     .card-title {
-      margin-bottom: 0px;
+      margin-bottom: 1vh;
       font-size: 30px;
       text-align: center;
       color: cyan;
@@ -668,7 +669,7 @@
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         } else {
-          entry.target.classList.remove('visible'); // 👈 This line resets the animation
+          entry.target.classList.remove('visible'); 
         }
       });
     }, {
