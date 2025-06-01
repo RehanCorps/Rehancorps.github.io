@@ -11,7 +11,21 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Sansation&display=swap"
     rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --dark-bg: #000000;
+      --metallic-dark: linear-gradient(145deg, #121214, #070709);
+      --metallic-glow: 0 0 15px #0ff, 0 0 30px #0ff inset;
+      --hover-gradient: linear-gradient(145deg, #00727a, #10ec08);
+      --border-gradient: linear-gradient(30deg, rgb(255, 0, 0), rgb(31, 0, 170));
+      --neon-text: linear-gradient(90deg, rgb(252, 255, 255),rgb(32, 32, 32) , rgb(10, 10, 10));
+      --neon-text0: linear-gradient(45deg, rgb(252, 255, 255),rgb(53, 52, 52) , rgb(43, 42, 42));
+      --neon-text1: linear-gradient(180deg, rgb(252, 255, 255),rgb(59, 59, 59) , rgb(8, 8, 8));
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -29,12 +43,32 @@
       color: white;
       font-family: 'josefin sans', sans-serif;
       overflow-x: hidden;
+      height: 200vh;
+    }
+
+    .image-gradient {
+      position: absolute;
+      top: 0;
+      right: 0;
+      opacity: 0.5;
+      z-index: -1;
+    }
+
+    .layer-blur {
+      height: 0;
+      width: 30rem;
+      position: absolute;
+      top: 20%;
+      right: 0;
+      box-shadow: 0 0 700px 15px rgb(77, 134, 199);
+      rotate: -30deg;
+      z-index: -1;
     }
 
     .header {
       position: fixed;
       width: 100%;
-      background-color: #1a1a1a;
+      background-color: transparent;
       top: 0;
       left: 0;
       z-index: 1000;
@@ -42,7 +76,7 @@
 
     nav {
       display: flex;
-      background-color: black;
+      background-color: transparent;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
@@ -55,8 +89,10 @@
     }
 
     .nav__logo span {
-      color: cyan;
-      text-shadow: 0 1px 4px cyan;
+      background: var(--neon-text0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 1000;
     }
 
     .nav__toggle {
@@ -87,13 +123,21 @@
       transition: 0.3s;
     }
 
-    .nav__link:hover {
-      color: #00ffc3;
+    .nav__link::after{
+      content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, #ffffff, #000000);
+  transition: width 0.4s ease;
     }
-
-    /* Backdrop overlay for mobile menu */
+    .nav__link:hover:after{
+ width: 100%;
+}
     .nav-backdrop {
-      display: none;
+      display: grid;
       position: fixed;
       inset: 0;
       background-color: transparent;
@@ -102,14 +146,12 @@
       opacity: 0;
       transition: 0.3s ease;
       pointer-events: none;
-      /* prevent clicks when hidden */
     }
 
     .nav-backdrop.active {
-      display: inline-block;
+      display: flex;
       opacity: 1;
       pointer-events: auto;
-      /* allow clicks when active */
     }
 
     .hero {
@@ -119,34 +161,10 @@
       justify-content: center;
       padding: 6rem 2rem 2rem;
       text-align: center;
+      background-repeat: no-repeat;
+
     }
 
-    .circle-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .circle {
-      width: 200px;
-      height: 200px;
-      background-color: cyan;
-      border-radius: 50%;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 10px 50px cyan;
-      /* Cyan glow shadow */
-    }
-
-
-    .circle img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
 
     .icon-container {
       display: flex;
@@ -157,115 +175,70 @@
     }
 
     .icon {
-      font-size: 30px;
-      color: #ffffff;
+      font-size: 2rem;
+      background: var(--neon-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 1000;
       text-decoration: none;
       align-items: center;
       display: flex;
       gap: 100px;
       transition: transform 0.3s ease, text-shadow 0.3s ease;
-      text-shadow: 0 0 8px #00ffff;
       margin-left: 2%;
     }
 
     .icon:hover {
       transform: scale(1.4);
-      text-shadow: 0 0 15px cyan, 0 0 25px cyan;
-      color: #00ffff;
+      color: var(--hover-gradient);
+
     }
 
 
     .intro-text h1 {
-      font-size: 2rem;
+      font-size: 60px;
+      font-weight: 100;
+      margin-top: 2%;
+      padding: 0;
+      font-family: 'orbitron', sans-serif;
+  background: linear-gradient(90deg, #000000,#ffffff,  #4581b9, #1b1b1b);
+  background-size: 800% 800%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: moveGradient 20s ease infinite;
+    }
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+    .intro-text h6 {
+      font-size: 45px;
+      font-weight: 10;
       margin-top: 10%;
+      font-family: 'josefin sans', sans-serif;
+      text-shadow: 0 0 8px whitesmoke;
     }
 
-    .intro-text h1 span {
-      color: cyan;
-      text-shadow: 0 0 10px cyan;
-    }
 
-    .intro-text h3 {
-      font-size: 1.3rem;
-      margin: 0.5rem 0;
-      position: static;
-    }
+
+
 
     .intro-text p {
-      color: white;
+      color: silver;
       margin-top: 5%;
-    }
+      font-family: 'josefin sans', sans-serif;
 
-    /* Fixed wrapper to prevent shaking */
-
-
-    .intro-text h3 span#typewriter {
-      color: #00ffc3;
-      font-weight: bold;
-      white-space: nowrap;
-      display: inline-block;
-    }
-
-    .intro-text h3 span {
-      /* No animation on "I'm a", only on #typewriter */
-      display: inline;
-    }
-
-    .intro-text p {
-      font-size: 1rem;
-    }
-
-    .intro-buttons {
-      display: flex;
-      justify-content: center;
-      /* Horizontal centering */
-      align-items: center;
-      gap: 1rem;
-      margin: 2rem auto;
-      /* Center container itself */
-      width: 100%;
-      /* Full width of parent */
-      max-width: 100%;
-      /* Prevent overflow */
-      flex-wrap: wrap;
-      /* Allow wrap on smaller screens */
-    }
-
-    .intro-buttons button {
-      border: 2px solid cyan;
-      background: transparent;
-      color: cyan;
-      border-radius: 30px;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-      transition: color 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.5rem 1rem;
-      min-width: 120px;
+      font-size: 1.2rem;
     }
 
 
-
-    .intro-buttons button::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: cyan;
-      z-index: -1;
-      transition: 0.3s ease;
-    }
-
-
-    .intro-buttons button:hover::before {
-      width: 100%;
-    }
 
     .section {
       padding: 3rem 1rem;
@@ -279,12 +252,64 @@
       gap: 1rem;
       margin-top: 2rem;
     }
+.edu-card:hover{
+box-shadow: 0 2px 10px rgb(112, 112, 112);
+  transform: scale(1.09) rotateX(10deg) rotateY(10deg);
+
+}
+
+
 
     @media (min: 768px) {
+
+
+      .hero {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        text-align: center;
+        z-index: 1;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+      }
+
+      .content {
+        z-index: 2;
+      }
+
+      .logo-container {
+        position: relative;
+      }
+
+
+      .intro h2 {
+        font-size: 45px;
+        color: white;
+        line-height: 1.5;
+        margin-bottom: 0;
+      }
+
+
+      .intro p {
+        font-size: 15px;
+        color: whitesmoke;
+        max-width: 500px;
+        line-height: 1.6;
+        margin-bottom: 0px;
+        margin-top: 0px;
+      }
 
       .section {
         display: flex;
         width: 100%;
+      }
+
+      .card-title {
+        font-size: 60px;
       }
     }
 
@@ -300,78 +325,114 @@
 
     .contact-form input,
     .contact-form textarea {
-      padding: 0.8rem;
-      background: rgb(61, 65, 65);
-      border: 1px solid transparent;
+      padding: 1rem;
+      background: linear-gradient(#292929,#4b4b4b,#fcfcfc);
+      border: none;
       border-radius: 10px;
-      color: white;
+      color: black;
     }
 
     .contact-form input:focus,
     .contact-form textarea:focus {
       outline: none;
-      border-color: cyan;
-      box-shadow: 0 0 10px cyan;
+      box-shadow: 0 0 7px grey;
     }
 
     .contact-form button {
-      background: rgb(64, 150, 163);
-      color: rgb(240, 231, 231);
-      padding: 0.8rem;
-      border: none;
-      border-radius: 30px;
+      position: relative;
+      padding: 0.8em 2.5em;
+      font-size: 1.2rem;
       font-weight: bold;
-      font-size: 1.3rem;
-      font-family: 'josefin sans', sans-serif;
+      color: black;
+      border: none;
+      text-decoration: none;
+      cursor: pointer;
+      border-radius: 12px;
+      background: linear-gradient(45deg,#000000, #ffffff, #0f5699,#ffffff);
+      
+      background-size: 400% 400%;
+      animation: gradientFlow 6s ease infinite;
+      transition: box-shadow 0.2s ease, transform 0.1s ease;
+      z-index: 1;
+      overflow: hidden;
 
     }
 
-    .contact-form button :hover {
-      background: rgb(64, 150, 163);
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 0 10px rgb(64, 150, 163), 0 0 10px rgb(64, 150, 163);
+    .contact-form button:hover {
+      color: rgb(3, 3, 3);
+      transform: translateY(-10px);
+      z-index: 2;
+      outline: none;
+      transition: 0.3s ease;
     }
 
     .slide-in-left,
     .slide-in-bottom {
       opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease-out;
+      transform: translateY(25px);
+      transition: all 1s ease-out;
     }
 
     .visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0px);
     }
 
     .buttons {
       display: flex;
-      justify-content: flex-start;
-      gap: 40px;
-      z-index: 10;
-      margin-top: 0px;
-      position: relative;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem auto;
+      width: 100%;
+      max-width: 100%;
+      flex-wrap: wrap;
     }
 
     .buttons .btn {
-      padding: 10px 20px;
-      background: rgb(64, 150, 163);
       position: relative;
-      color: white;
+      padding: 0.8em 2.5em;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: black;
+      border: none;
       text-decoration: none;
-      border-radius: 300px;
-      transition: 0.3s ease;
-      text-shadow: 0 0 8px rgb(64, 150, 163);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      border-radius: 12px;
+      background: linear-gradient(45deg,#000000, #ffffff, #0f5699,#ffffff);
+      background-size: 400% 400%;
+      animation: gradientFlow 4s ease infinite;
+      transition: box-shadow 0.2s ease, transform 0.4s ease;
       z-index: 1;
-      pointer-events: all;
-      margin-top: 2rem;
+      overflow: hidden;
+    }
+ .buttons .btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      right: 0; bottom: 0;
+      background: inherit;
+      filter: blur(20px);
+      z-index: -1;
+      border-radius: inherit;
+      opacity: 1;
+      transition: opacity 0.2s ease;
     }
 
-    .buttons :hover {
-      background: rgb(64, 150, 163);
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 0 10px rgb(64, 150, 163), 0 0 10px rgb(64, 150, 163);
+
+    .buttons .btn:hover {
+      transform: scale(1.2);
+    }
+
+  .buttons .btn:hover::before {
+      opacity: 1;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    
     }
 
     .card-container {
@@ -384,39 +445,43 @@
     .card {
       padding: 1.2rem;
       border: none;
+      padding: 3rem 1rem;
       border-radius: 10px;
-      transition: all 0.3s ease;
-      background: transparent;
+      background: var(--metallic-glow);
+      box-shadow: 0 1px 10px rgb(0, 0, 0), 1px 3px 1px rgb(78, 78, 78) inset;
+      transition: 0.3s ease, box-shadow 0.3s ease;
       display: flex;
+  transform: scale(1.09) rotateX(10deg) rotateY(40deg);
+    
       flex-direction: column;
       align-items: center;
       box-sizing: border-box;
     }
 
     .card-title {
-      margin-bottom: 0px;
-      font-size: 30px;
+      margin-bottom: 20%;
+      font-size: 20px;
       text-align: center;
-      color: cyan;
-      text-shadow: cyan 0 0 10px;
+      color: silver;
+      text-shadow:0 1px 7px silver;
     }
 
     .card img {
-      width: 100%;
+      width: 90%;
       height: auto;
       max-height: 500px;
       object-fit: contain;
       object-position: center;
       margin-top: 1rem;
       border-radius: 5px;
-      filter: drop-shadow(0 0 10px cyan);
+      filter: drop-shadow(0 0 3px white);
       transition: filter 0.3s ease;
     }
 
     .card:hover {
-      background: transparent;
-      color: rgb(238, 233, 233);
-      transform: translateY(-10px);
+      background: linear-gradient( #000000, #bdbdbd,#414040);
+      color: black;
+      transform: translateY(10px);
       z-index: 1;
       outline: none;
     }
@@ -426,6 +491,26 @@
       .card {
         padding: 1rem;
         border: none;
+      }
+
+      .hero {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        padding: 6rem 2rem 2rem;
+        text-align: center;
+        background-image: url(imgs/Untitled\ design\ \(19\).png);
+        z-index: 1;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+      }
+
+      .content {
+        z-index: 2;
+        margin-top: 103%;
       }
 
       .card-title {
@@ -439,20 +524,128 @@
 
     /* Mobile (even more compact) */
     @media (max-width: 480px) {
-      .card {
-        padding: 0.5rem;
-        border: none;
+      .header{
+        padding-bottom: 1rem;
+      }
+      .hero {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        padding: 0rem 4rem ;
+        text-align: center;
+        background-image: url();
+        z-index: 1;
+        background-repeat: no-repeat;
+        background-size: 150%;
+        background-position: center;
+        height: 70vh;
+      }
+      .bg-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(icons/images\ \(1\).jpg); /* Replace with your image */
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  transition: opacity 0.1s linear;
+}
+ .layer-blur {
+      height: 0;
+      width: 30rem;
+      position: absolute;
+      top: 20%;
+      right: 0;
+      box-shadow: 0 0 600px 30px rgb(238, 246, 255);
+      rotate: -30deg;
+      z-index: -1;
+ }
+
+.buttons .btn{
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+}
+      .circle-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
       }
 
-      .card-title {
-        font-size: 18px;
+      .circle {
+        width: 100%;
+        height: auto;
+        background-color: transparent;
+
+
       }
 
-      .card img {
-        max-height: 120px;
+      .circle img {
+        width: 200%;
+        height: auto;
+        object-fit: none;
       }
+
+      .content {
+        z-index: 2;
+        margin-top: 103%;
+      }
+ .card-container {
+      gap: 2rem;
+      padding: 1rem;
     }
- .footer {
+      .card {
+      padding: 1.2rem;
+      border: none;
+      padding: 3rem 1rem;
+      border-radius: 10px;
+      background: rgb(24, 24, 24);
+      box-shadow: 0 1px 10px rgb(0, 0, 0), 1px 3px 1px rgb(78, 78, 78) inset;
+      transition: 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+  transform: scale(1.09) rotateX(10deg) rotateY(40deg);
+    
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    .card-title {
+      margin-bottom: 20%;
+      font-size: 20px;
+      text-align: center;
+      color: silver;
+      text-shadow:0 1px 7px silver;
+    }
+
+    .card img {
+      width: 90%;
+      height: auto;
+      max-height: 500px;
+      object-fit: contain;
+      object-position: center;
+      margin-top: 1rem;
+      border-radius: 5px;
+      filter: drop-shadow(0 0 3px white);
+      transition: filter 0.3s ease;
+    }
+
+    .card:hover {
+      background: linear-gradient( #000000, #bdbdbd,#414040);
+      color: black;
+      transform: translateY(10px);
+      z-index: 1;
+      outline: none;
+    }
+
+    }
+
+    .footer {
       position: relative;
       bottom: 0;
       display: flex;
@@ -463,6 +656,7 @@
       font-size: 11px;
 
     }
+
     @media (max-width: 768px) {
       .nav__list {
         display: none;
@@ -480,6 +674,8 @@
         transform: translateX(100%);
       }
 
+      
+
       .nav__list.active {
         display: flex;
         transform: translateX(0);
@@ -488,18 +684,26 @@
       .nav__toggle {
         display: flex;
       }
+    }
 
-      #typed {
-        color: cyan;
-        font-weight: bold;
-        font-size: 30px;
-      }
+    #typed {
+      background: var(--neon-text1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: none;
+      font-size: 2.5rem;
+
+    }
+    .bot:hover{
+transform: scale(1.2);
+z-index: 999;
     }
   </style>
 </head>
 
 <body>
-  <div id="chatbot-icon" style="
+  <div class="bg-image" id="bg"></div>
+ <div class="bot" id="chatbot-icon" style="
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -508,8 +712,8 @@
     width: 100px;
     height: auto;
     transition: transform 0.3s ease;
-  " onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'">
-    <img src="images folder/chatbot icon.gif" alt="Chat Icon" style="
+  " >
+    <img src="icons/chatbot icon.gif" alt="Chat Icon" style="
       width: 100%;
       height: 100%;
       max-width: 100%;
@@ -518,16 +722,16 @@
       display: block;
     " />
   </div>
-
-
-
+  <img class="image-gradient" src="icons/gradient.png" alt="">
+  <div class="layer-blur"></div>
   <header class="header">
     <nav>
-      <div class="nav__logo">REH<span>NOVA</span></div>
+      <div class="nav__logo"><span>REH</span>NOVA</div>
       <ul class="nav__list" id="nav-list">
         <li><a href="#home" class="nav__link">Home</a></li>
-        <li><a href="#education" class="nav__link">Education</a></li>
-        <li><a href="#services" class="nav__link">Services</a></li>
+        <li><a href="#Education" class="nav__link">Education</a></li>
+        <li><a href="#services" class="nav__link">Hobbies</a></li>
+        <li><a href="#expertise" class="nav__link">Expertise</a></li>
         <li><a href="#contact" class="nav__link">Contact</a></li>
       </ul>
       <div class="nav__toggle" id="nav-toggle">
@@ -540,166 +744,246 @@
   </header>
 
   <section class="hero" id="home">
-    <div class="intro-text slide-in-left">
-      <h1>Hi, I'M <span>REHAN</span></h1>
-      <h1><span id="typed"></span></h1>
-      <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <div class="content">
+      <div class="circle-wrapper">
+        <div class="circle slide-in-bottom">
+          <img src="" alt="">
 
-      <p>An AI Automation expert and SaaS builder, making AI-powered lead generation tools, chatbots, and small
-        automations to help businesses grow.My focus is on simple, effective solutions that save time and drive results.
-        Let's work together to automate your success.</p>
-      <div class="icon-container slide-in-left">
-        <a href="mailto:rbrehanbhatti786@gmail.com" class="icon"><i class="fas fa-envelope"></i></a>
-        <a href="https://instagram.com/rehanbhatti__01" target="_blank" class="icon"><i
-            class="fab fa-instagram"></i></a>
-        <a href="https://github.com/RehanCorps" target="_blank" class="icon"><i class="fab fa-github"></i></a>
-        <a href="https://wa.me/923425040554" target="_blank" class="icon"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <div class="intro-text slide-in-left">
+          <h6>IT'S ME</h6>
+          <h1>REHAN</h1>
+          <h1><span id="typed"></span></h1>
+          <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+          <p>Tech-Obsessed, Coding lover and dangerously knowledgeable. If i were a programming language, I'd be Python-
+            Elegant, powerful and loved by all.My confidence would make compiler to ignore the syntax errors. And
+            knowledge?
+            I got stacks of it.</p>
+          <div class="icon-container slide-in-left">
+            <a href="mailto:rbrehanbhatti786@gmail.com" class="icon"><i class="fas fa-envelope"></i></a>
+            <a href="https://instagram.com/rehanbhatti__01" target="_blank" class="icon"><i
+                class="fab fa-instagram"></i></a>
+            <a href="https://github.com/RehanCorps" class="icon" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+
+            <a href="https://wa.me/923425040554" target="_blank" class="icon"><i class="fab fa-whatsapp"></i></a>
+          </div>
+          <div style="display: flex; justify-content: center; margin-top: 1rem;">
+            <div class="buttons slide-in-left">
+              <a href="#contact" class="btn">Avail Service</a>
+            </div>
+          </div>
+
+        </div>
       </div>
-     <div style="display: flex; justify-content: center; margin-top: 1rem;">
-  <div class="buttons slide-in-left">
-    <a href="#contact" class="btn">Hire Me</a>
-    <a href="#projects" class="btn">Projects</a>
-  </div>
-</div>
-    </div>
-    <div class="circle-wrapper">
-      <div class="circle slide-in-bottom">
-        <img src="images folder/Untitled design (3).png" alt="Profile" />
-      </div>
-    </div>
 
     </div>
-
+    </div>
   </section>
-
-  <section id="education" class="section slide-in-left">
-  <h2 class="section-title slide-in-left">Education</h2>
-  <div style="
+  <section id="Education" class="section slide-in-left">
+    <h2 class="section-title slide-in-left"
+      style="
+      font-weight: 1000;
+      font-size: 3rem;
+      background: var(--neon-text1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; margin-top: 10rem;">Education</h2>
+    <div style="
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
-    padding: 0 1rem;
+    gap: 4rem;
+    margin-top:  0.5 rem;
+    padding: 2rem 4rem;
   ">
-    <div style="
-      border: 1px solid cyan;
-      border-radius: 20px;
-      padding: 15px;
+      <div class="edu-card" style="
+      border-radius: 10px;
+      padding: 5rem 2rem;
       width: 250px;
-      backdrop-filter: blur(4px);
-      background: rgba(0, 255, 255, 0.05);
+ position: relative;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      background: linear-gradient( #424242, #000000, #000000);
+      background-size: 400% 400%;
+      animation: gradientFlow 6s ease infinite;
+      transition: box-shadow 0.4s ease, transform 0.2s ease;
+      z-index: 1;
+      overflow: hidden;
+       transition: transform 0.2s ease;
+  transform-style: preserve-3d;
     ">
-      <h3 style="margin: 8%; font-size: 1rem; color: #00ffff; text-shadow: 0 0 5px cyan;">
-        Diploma in ML and Deep Learning
-      </h3>
-      <p>PEC initiative</p>
-      <p style="font-size: 14px; margin: 5%; color: #ccc;">2023 - 2024</p>
-    </div>
+        <h3 style="margin: 8%; font-size: 1rem; color: white; text-shadow: 0 0 5px goldenrod;">
+          Diploma in ML and Deep Learning
+        </h3>
+        <p>Coursera</p>
+        <p style="font-size: 14px; margin: 5%; color: #ccc;">2023 - 2024</p>
+      </div>
 
-    <div style="
-      border: 1px solid cyan;
-      border-radius: 20px;
-      padding: 15px;
+      <div class="edu-card" style="
+      border-radius: 10px;
+      padding: 5rem 2rem;
       width: 250px;
-      backdrop-filter: blur(4px);
-      background: rgba(0, 255, 255, 0.05);
-    ">
-      <h3 style="margin: 8%; font-size: 1rem; color: #00ffff; text-shadow: 0 0 5px cyan;">
-        Diploma of AI In Marketing
-      </h3>
-      <p>PEC initiative</p>
-      <p style="font-size: 14px; margin: 5%; color: #ccc;">2023 - 2024</p>
-    </div>
+ position: relative;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      background: linear-gradient( #424242, #000000, #000000);
+      background-size: 400% 400%;
+      animation: gradientFlow 6s ease infinite;
+      transition: box-shadow 0.4s ease, transform 0.2s ease;
+      z-index: 1;
+      overflow: hidden;
+">
+        <h3 style="margin: 8%; font-size: 1rem; color: white; text-shadow: 0 0 5px goldenrod;">
+          Diploma in Data Analysis
+        </h3>
+        <p>Coursera</p>
+        <p style="font-size: 14px; margin: 5%; color: #ccc;">2022 - 2023</p>
+      </div>
 
-    <div style="
-      border: 1px solid cyan;
-      border-radius: 20px;
-      padding: 15px;
+      <div class="edu-card" style="
+      border-radius: 10px;
+      padding: 5rem 2rem;
       width: 250px;
-      backdrop-filter: blur(4px);
-      background: rgba(0, 255, 255, 0.05);
+ position: relative;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      background: linear-gradient( #424242, #000000, #000000);
+      background-size: 400% 400%;
+      animation: gradientFlow 6s ease infinite;
+      transition: box-shadow 0.4s ease, transform 0.2s ease;
+      z-index: 1;
+      overflow: hidden;
+;
+
     ">
-      <h3 style="margin: 8%; font-size: 1rem; color: #00ffff; text-shadow: 0 0 5px cyan;">
-        Diploma in Data Analysis
-      </h3>
-      <p>PEC initiative</p>
-      <p style="font-size: 14px; margin: 5%; color: #ccc;">2022 - 2023</p>
+        <h3 style="margin: 8%; font-size: 1rem; color: white; text-shadow: 0 0 5px goldenrod;">
+          Intermediate in Pre-Engineering
+        </h3>
+        <p>Punjab College Jand</p>
+        <p style="font-size: 14px; margin: 5%; color: #ccc;">2022 - 2023</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
 
   <section id="services" class="section slide-in-left">
-    <h2 class="section-title slide-in-left">Services</h2>
+    <h2 class="section-title slide-in-left"  style="
+      font-weight: 1000;
+      padding: 3rem;
+      font-size: 3rem;
+      background: var(--neon-text1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; margin-top: 10rem;">Hobbies</h2>
     <div class="card-container">
       <div class="card">
-        <h3 class="card-title">AI Automation SAAS</h3>
-        <img src="images folder/ai automation.png" alt="Image 1">
+        <h3 class="card-title">Books Reading</h3>
+        <img src="icons/reading-removebg-preview.png" alt="Image 1">
+      </div>
+      <div class="card">
+        <h3 class="card-title">Calesthanics</h3>
+        <img src="icons/cale-removebg-preview.png" alt="Image 2" style="width: 100%; height: auto;">
+      </div>
+      <div class="card">
+        <h3 class="card-title">Improving Skills</h3>
+        <img src="icons/skill-removebg-preview.png" alt="Image 1">
+      </div>
+      <div class="card">
+        <h3 class="card-title">Doing Maths</h3>
+        <img src="icons/mth-removebg-preview.png" alt="Image 3">
+      </div>
+  </section>
+
+  <section id="expertise" class="section slide-in-left">
+    <h2 class="section-title slide-in-left"  style="
+      font-weight: 1000;
+      font-size: 3rem;
+      padding: 3rem;
+      background: var(--neon-text1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; margin-top: 10rem;">Expertise</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3 class="card-title">AI Automation</h3>
+        <img src="icons/Untitled design (18).png" alt="Image 1">
       </div>
       <div class="card">
         <h3 class="card-title">Chatbot Development</h3>
-        <img src="images folder/chatbot.png" alt="Image 1">
+        <img src="icons/chatbot.png" alt="Image 1">
       </div>
+
       <div class="card">
         <h3 class="card-title">Web Development</h3>
-        <img src="images folder/web dev.png" alt="Image 3">
+        <img src="icons/Untitled design (15).png" alt="Image 3">
       </div>
       <div class="card">
-        <h3 class="card-title">Math Expertise</h3>
-        <img src="images folder/math.png" alt="Image 3">
+        <h3 class="card-title">Maths & Physics Lover</h3>
+        <img src="icons/math.png" alt="Image 3">
       </div>
-      <div class="card">
-        <h3 class="card-title">Lead Generation</h3>
-        <img src="images folder/lead gen.png" alt="Image 3">
-      </div>
-      <!-- Add more cards -->
-    </div>
-
   </section>
-  <section id="contact" class="section slide-in-bottom">
-    <h2 class="section-title slide-in-bottom">Contact<span style="color: cyan;"> Me</h2>
-   <form class="contact-form slide-in-bottom" id="contact-form" 
-  action="https://formspree.io/f/manoblnb" 
-  method="POST">
-      <input type="text" name="name" placeholder="Full Name">
+  <section id="contact" class="section slide-in-bottom" style="padding: 3rem 1rem;">
+    <h2 class="section-title slide-in-bottom"  style="
+      font-weight: 1000;
+      font-size: 3rem;
+      padding: 2rem;
+      background: var(--neon-text1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; margin-top: 10rem;">Contact<span
+        style=" background: var(--neon-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow:0 2px 2px white;"> Me</h2>
+    <form class="contact-form slide-in-bottom" id="contact-form" action="https://formspree.io/f/manoblnb" method="POST">
+      <input type="name" name="name" placeholder="Full Name">
       <input type="email" name="email" placeholder="Email">
-      <input type="text" name="number" placeholder="Phone Number">
-      <input type="text" name="subject" placeholder="Subject">
-      <textarea name="message" placeholder="Your Message"></textarea>
+      <input type="phone" name="phone" placeholder="Phone">
+      <input type="text" name="Message" placeholder="Subject">
+      <textarea style="padding: 1rem 3rem; text-align: start;" placeholder="Your Message"></textarea>
       <button type="submit" class="btn">Send Message</button>
     </form>
   </section>
   <script>
-  const form = document.getElementById('contact-form');
-  const messageDiv = document.createElement('div');
-  form.parentNode.insertBefore(messageDiv, form.nextSibling); // put message below form
+    const form = document.getElementById('contact-form');
+    const messageDiv = document.createElement('div');
+    form.parentNode.insertBefore(messageDiv, form.nextSibling); // put message below form
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-    const formData = new FormData(form);
+      const formData = new FormData(form);
 
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
 
-      if (response.ok) {
-        messageDiv.textContent = 'Thank you! Your message has been sent.';
-        messageDiv.style.color = 'cyan';  // style as you want
-        form.reset();
-      } else {
+        if (response.ok) {
+          messageDiv.textContent = 'Thank you! Your message has been sent.';
+          messageDiv.style.color = 'cyan';
+          form.reset();
+        } else {
+          messageDiv.textContent = 'Oops! There was a problem submitting your form.';
+          messageDiv.style.color = 'red';
+        }
+      } catch (error) {
         messageDiv.textContent = 'Oops! There was a problem submitting your form.';
         messageDiv.style.color = 'red';
       }
-    } catch (error) {
-      messageDiv.textContent = 'Oops! There was a problem submitting your form.';
-      messageDiv.style.color = 'red';
-    }
-  });
-</script>
+    });
+  </script>
+
   <script src="https://cdn.jsdelivr.net/npm/typewriter-effect@2.18.0/dist/core.js"></script>
   <script>
     // Intersection animations
@@ -713,21 +997,11 @@
         }
       });
     }, {
-      threshold: 0.3
+      threshold: 0.6
     });
     slideElements.forEach(el => observer.observe(el));
 
-    // Typewriter effect
 
-    var typed = new Typed("#typed", {
-      strings: ["Web Developer", "Chatbot Builder", "Automation Expert"],
-      typeSpeed: 60,
-      backSpeed: 40,
-      loop: true,
-    });
-
-
-    // Mobile menu toggle
     const navToggle = document.getElementById('nav-toggle');
     const navList = document.getElementById('nav-list');
     const navBackdrop = document.getElementById('nav-backdrop');
@@ -754,11 +1028,40 @@
         navBackdrop.classList.remove('active');
       });
     });
+    var typed = new Typed("#typed", {
+      strings: ["Distinct", "Happy ", "Young", "Optimist"],
+      typeSpeed: 150,
+      backSpeed: 60,
+      loop: true,
+    });
   </script>
+ <script>
+  const bg = document.getElementById('bg');
 
-  <iframe id="chatbot-frame"
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const windowHeight = window.innerHeight;
+  const docHeight = document.body.scrollHeight;
+
+  // Distance from the top to bottom
+  const maxScroll = docHeight - windowHeight;
+
+  // Get scroll progress (0 to 1)
+  const progress = scrollTop / maxScroll;
+
+  // Calculate distance from center (0.5 is center)
+  const distFromCenter = Math.abs(progress - 0.5) * 2; // range 0 to 1
+
+  // Reverse distance so opacity is 1 at center, 0 at top/bottom
+  const opacity = 1 - distFromCenter;
+
+  bg.style.opacity = opacity;
+});
+
+</script>
+ <iframe id="chatbot-frame"
     src="https://cdn.botpress.cloud/webchat/v2.4/shareable.html?configUrl=https://files.bpcontent.cloud/2025/04/03/07/20250403075607-YQ76CUCX.json"
-    style="display:none; position: fixed; bottom: 100px; right: 20px; width: 300px; height: 480px; border: none; border-radius: 12px; z-index: 9998;">
+    style="display:none; position: fixed; bottom: 100px; right: 20px; width: 350px; height: 500px; border: none; border-radius: 12px; z-index: 9998;">
   </iframe>
 
   <script>
@@ -772,10 +1075,10 @@
         chatFrame.style.display = 'none';
       }
     });
-  </script>
-
+    </script>
 </body>
-  <footer class="footer" style="color: gray;">
-  &copy; 2025 RehanCorporations. All rights reserved.
+<footer class="footer" style="color: grey;">
+  &copy; 2025 All rights reserved. Developed and designed by: RehanCorps
 </footer>
+
 </html>
