@@ -37,7 +37,6 @@
       scroll-behavior: smooth;
       /* smooth scroll for anchor links */
     }
-
     body {
       background: black;
       color: white;
@@ -830,29 +829,61 @@
     margin-top:  1 rem;
     padding: 2rem ;
   ">
-      <div class="edu-card" style="
-      border-radius: 10px;
-      padding: 5rem 2rem;
-      width: 80vw;
-      max-width:350px;
- position: relative;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: white;
-      text-decoration: none;
-      cursor: pointer;
-      background: linear-gradient( #424242, #000000, #000000);
-      background-size: 400% 400%;
-      animation: gradientFlow 6s ease infinite;
-      transition: box-shadow 0.4s ease, transform 0.2s ease;
-      z-index: 1;
-      overflow: hidden;">
+     <div>
+      <div class="relative z-[1] overflow-hidden 
+  rounded-[10px] px-8 py-20 w-[80vw] max-w-[350px] 
+  text-white text-[1.2rem] font-bold no-underline cursor-pointer 
+  bg-gradient-to-b from-[#424242] via-black to-black 
+  bg-[length:400%_400%] transition-shadow duration-400 ease-in-out animate-[gradientFlow_6s_ease_infinite]"
+  
+  style="
+    --shine-color: rgba(255, 255, 255, 0.3);
+    position: relative;
+  ">
+
+  <!-- shine layer -->
+  <div style="
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -150%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(
+      120deg,
+      transparent 48%,
+      var(--shine-color) 50%,
+      transparent 52%
+    );
+    transform: rotate(25deg);
+    animation: shine 4s linear infinite;
+    pointer-events: none;
+    filter: blur(1px);
+    z-index: 2;
+  "></div>
+
+  <!-- your content -->
         <h3 style="margin: 8%; font-size: 1rem; color: white; text-shadow: 0 0 5px goldenrod;">
           Diploma in ML and Deep Learning
         </h3>
         <p>Coursera</p>
         <p style="font-size: 14px; margin: 5%; color: #ccc;">2023 - 2024</p>
       </div>
+
+  <!-- inline keyframes -->
+  <style>
+    @keyframes shine {
+      0% { transform: translateX(-100%) rotate(25deg); }
+      100% { transform: translateX(100%) rotate(25deg); }
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+  </style>
+</div>
+</div>
 
       <div class="edu-card" style="
       border-radius: 10px;
