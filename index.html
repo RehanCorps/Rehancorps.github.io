@@ -828,28 +828,21 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-top:  1 rem;
-    padding: 2rem 4rem;
+    padding: 2rem ;
   ">
       <div class="edu-card" style="
+      padding: 1.2rem;
+      border: none;
+      padding: 3rem 1rem;
       border-radius: 10px;
-      padding: 5rem 2rem;
-      width: 80vw;
-      max-width:350px;
- position: relative;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: white;
-      text-decoration: none;
-      cursor: pointer;
-      background: linear-gradient( #424242, #000000, #000000);
-      background-size: 400% 400%;
-      animation: gradientFlow 6s ease infinite;
-      transition: box-shadow 0.4s ease, transform 0.2s ease;
-      z-index: 1;
-      overflow: hidden;
-       transition: transform 0.2s ease;
-  transform-style: preserve-3d;
-    ">
+      background: var(--metallic-glow);
+      box-shadow: 0 1px 10px rgb(0, 0, 0), 1px 3px 1px rgb(78, 78, 78) inset;
+      transition: 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      transform: scale(1.09) rotateX(10deg) rotateY(40deg);
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;">
         <h3 style="margin: 8%; font-size: 1rem; color: white; text-shadow: 0 0 5px goldenrod;">
           Diploma in ML and Deep Learning
         </h3>
