@@ -730,7 +730,13 @@
       font-size: 11px;
 
     }
-
+ @media (max-width: 344px){
+   .card-container{
+     display:flex;
+     flex-direction:column;
+     gap:0.5rem;
+   }
+ }
     @media (max-width: 768px) {
       .nav__list {
         display: none;
@@ -871,7 +877,6 @@
       <div class="edu-card" style="
       border-radius: 10px;
       padding: 1rem 3rem;
-     
       position: relative;
       font-size: 1.2rem;
       font-weight: bold;
