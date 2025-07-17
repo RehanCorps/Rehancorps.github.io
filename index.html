@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rehan's webpage</title>
+  <title>Rehnova Digitals</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -597,7 +597,6 @@
         justify-content: center;
         padding: 0rem 4rem;
         text-align: center;
-        background-image: url();
         z-index: 1;
         background-repeat: no-repeat;
         background-size: 150%;
@@ -611,11 +610,6 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url(displays/me.png);
-        /* Replace with your image */
-        background-size: cover;
-        background-position: center;
-        opacity: 0;
         pointer-events: none;
         z-index: -1;
         transition: opacity 0.1s linear;
@@ -889,7 +883,7 @@
       overflow: hidden;
     ">
         <h3 style="margin: 8%; font-size: 1rem; color: white; text-shadow: 0 0 5px goldenrod;">
-          Diploma in ML and Deep Learning
+          Web Development Studies
         </h3>
         <p>Coursera</p>
         <p style="font-size: 14px; margin: 5%; color: #ccc;">2023 - 2024</p>
@@ -912,7 +906,7 @@
       overflow: hidden;
     ">
         <h3 style="margin: 8%; font-size: 1rem; color: white; text-shadow: 0 0 5px goldenrod;">
-          Diploma in Data Analysis
+          AI Agents Studies
         </h3>
         <p>Coursera</p>
         <p style="font-size: 14px; margin: 5%; color: #ccc;">2022 - 2023</p>
@@ -921,8 +915,6 @@
        <div class="edu-card" style="
       border-radius: 15px;
       padding: 1rem 3rem;
-
-  
       position: relative;
       font-size: 1.2rem;
       font-weight: bold;
@@ -935,9 +927,9 @@
       overflow: hidden;
     ">
         <h3 style="margin: 8%; font-size: 1rem; color: white; text-shadow: 0 0 5px goldenrod;">
-          Intermediate in Pre-Engineering
+          SaaS, CaaS development Studies
         </h3>
-        <p>Punjab College Jand</p>
+        <p>Udemy</p>
         <p style="font-size: 14px; margin: 5%; color: #ccc;">2022 - 2023</p>
       </div>
     </div>
@@ -998,7 +990,7 @@
         <img src="displays/web dev.png" alt="Image 3">
       </div>
       <div class="card">
-        <h3 class="card-title">Maths & Physics Tutor</h3>
+        <h3 class="card-title">Maths & Physics Tutoring</h3>
         <p style="font-size: 14px; margin: 5%; color: #ccc;">Personalized Math & Physics sessions that make complex topics simple</p>
         <img src="displays/math.png" alt="Image 3">
       </div>
@@ -1012,8 +1004,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent; margin-top: 10rem;">Contact<span style=" background: var(--neon-text);
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow:0 2px 2px white;"> Me</h2>
+      -webkit-text-fill-color: transparent;"> Me</h2>
     <form class="contact-form slide-in-bottom" id="contact-form" action="https://formspree.io/f/manoblnb" method="POST">
       <input type="name" name="name" placeholder="Full Name">
       <input type="email" name="email" placeholder="Email">
@@ -1042,7 +1033,7 @@
 
         if (response.ok) {
           messageDiv.textContent = 'Thank you! Your message has been sent.';
-          messageDiv.style.color = 'cyan';
+          messageDiv.style.color = 'silver';
           form.reset();
         } else {
           messageDiv.textContent = 'Oops! There was a problem submitting your form.';
@@ -1106,30 +1097,7 @@
       loop: true,
     });
   </script>
-  <script>
-    const bg = document.getElementById('bg');
-
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const docHeight = document.body.scrollHeight;
-
-      // Distance from the top to bottom
-      const maxScroll = docHeight - windowHeight;
-
-      // Get scroll progress (0 to 1)
-      const progress = scrollTop / maxScroll;
-
-      // Calculate distance from center (0.5 is center)
-      const distFromCenter = Math.abs(progress - 0.5) * 2; // range 0 to 1
-
-      // Reverse distance so opacity is 1 at center, 0 at top/bottom
-      const opacity = 1 - distFromCenter;
-
-      bg.style.opacity = opacity;
-    });
-
-  </script>
+  
   <iframe id="chatbot-frame"
     src="https://cdn.botpress.cloud/webchat/v2.4/shareable.html?configUrl=https://files.bpcontent.cloud/2025/04/03/07/20250403075607-YQ76CUCX.json"
     style="display:none; position: fixed; bottom: 100px; right: 20px; width: 300px; height: 500px; border: none; border-radius: 12px; z-index: 9998;">
@@ -1149,7 +1117,6 @@
   </script>
 </body>
 <footer class="footer" style="color: grey;">
-  &copy; 2025 Rehan Corporations. All rights reserved.
+  &copy; 2025 Rehnova Digitals. All rights reserved.
 </footer>
-
 </html>
