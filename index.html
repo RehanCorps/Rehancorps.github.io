@@ -831,7 +831,7 @@
           <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
           <p>I was meant to lead with truth, but now I walk through the shadows of a fall I'd never thought would come</p>
-          <p  style='color:grey;'>When Aim Great, expect Great falls</p>
+          <p  style='color:grey;'>When Aim Great, do expect Great falls</p>
           <div class="icon-container slide-in-left">
             <a href="mailto:info.rehnova@gmail.com" class="icon"><i class="fas fa-envelope"></i></a>
             <a href="https://instagram.com/rehnova__" target="_blank" class="icon"><i
@@ -1049,20 +1049,21 @@
   <script src="https://cdn.jsdelivr.net/npm/typewriter-effect@2.18.0/dist/core.js"></script>
   <script>
     // Intersection animations
-    const slideElements = document.querySelectorAll('.slide-in-left, .slide-in-bottom');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        } else {
-          entry.target.classList.remove('visible');
-        }
-      });
-    }, {
-      threshold: 0.6
-    });
-    slideElements.forEach(el => observer.observe(el));
+    
+const slideElements = document.querySelectorAll('.slide-in-left, .slide-in-bottom');
 
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target); // Stop observing after first visibility
+    }
+  });
+}, {
+  threshold: 0.6
+});
+
+slideElements.forEach(el => observer.observe(el));
 
     const navToggle = document.getElementById('nav-toggle');
     const navList = document.getElementById('nav-list');
