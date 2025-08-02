@@ -6,6 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>REHNOVA | SaaS Agency</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --primary: #4f46e5;
@@ -17,7 +25,7 @@
       --metallic-dark: linear-gradient(90deg, #121214, #070709);
       --metallic-glow: 0 0 15px #0ff, 0 0 30px #0ff inset;
       --hover-gradient: linear-gradient(30deg, #000000, #000235, #000000);
-      --border-gradient: linear-gradient(30deg, rgb(255, 255, 255), rgb(31, 0, 170));
+      --border-gradient: linear-gradient(30deg, rgb(0, 87, 168), rgb(0, 65, 150));
       --neon-text: linear-gradient(30deg, #01162e, rgb(0, 0, 0), #000000);
       --neon-text0: linear-gradient(45deg, rgb(252, 255, 255), rgb(53, 52, 52), rgb(43, 42, 42));
       --neon-text1: linear-gradient(180deg, rgb(252, 255, 255), rgb(59, 59, 59), rgb(8, 8, 8));
@@ -31,7 +39,7 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'exo 2',sans-serif;
       color: var(--text);
       line-height: 1.6;
       width: 100vw;
@@ -204,45 +212,47 @@
 
     /* Cards------- */
     .section .card {
-      margin: 4rem auto;
+      margin: 1rem 1rem;
       display: flex;
-      gap: 2rem;
+      gap: 1rem;
+      flex-direction: row;
+      max-width: 100vw;
       justify-content: center;
       align-items: center;
-      flex-direction: row-reverse;
-      max-width: 70vw;
-      padding: 3rem 1rem;
+      padding: 8rem 1rem;
       width: 100vw;
       background: transparent;
-      backdrop-filter: blur(10px);
     }
 
     .section .card-2 {
-      margin: 4rem auto;
+      margin: 1rem 1rem;
       display: flex;
-      gap: 2rem;
+      gap: 1rem;
+      flex-direction: row-reverse;
+      max-width: 100vw;
       justify-content: center;
       align-items: center;
-      flex-direction: row;
-      max-width: 70vw;
-      padding: 3rem 1rem;
+      padding: 8rem 1rem;
       width: 100vw;
       background: transparent;
-      backdrop-filter: blur(10px);
     }
 
     .section .card-3 {
-      margin: 4rem auto;
+      margin: 1rem 1rem;
       display: flex;
-      gap: 2rem;
+      gap: 1rem;
+      flex-direction: row;
+      max-width: 100vw;
       justify-content: center;
       align-items: center;
-      flex-direction: row-reverse;
-      max-width: 70vw;
-      padding: 3rem 1rem;
+      padding: 8rem 1rem;
       width: 100vw;
       background: transparent;
-      backdrop-filter: blur(10px);
+    }
+
+    .section img {
+      margin: 1rem 6rem;
+      padding: 1rem 2rem;
     }
 
     /* Hero Section */
@@ -251,6 +261,8 @@
       text-align: center;
       background-color: transparent;
       height: 80vh;
+      font-weight: 300;
+      font-family: 'orbitron', sans-serif;
       background: transparent;
       margin-top: 10%;
     }
@@ -263,36 +275,36 @@
 
     header p {
       font-size: 1.2rem;
+      font-family: "exo 2", sans-serif;
       color: rgb(62, 91, 185);
       max-width: 600px;
       margin: 0 auto;
     }
 
-header .lines f{
-  color: lightblue;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 1rem;
-}
+    header .lines f {
+      color: lightblue;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 1rem;
+      font-family: 'orbitron', sans-serif;
+    }
 
     .section {
-      padding: 4rem 2rem;
       background-color: var(--hover-gradient);
-      margin: auto;
       background: var(--border-gradient);
-      margin: 4rem 2rem;
-      align-items: center;
+      margin: 6rem 1rem;
       border-radius: 30px;
     }
 
 
     .section h2 {
       display: flex;
+      color: rgb(0, 0, 0);
       justify-content: center;
       align-items: center;
       font-size: 3rem;
-      margin: 1rem;
+      margin: 1rem 0;
       padding: 1rem 1rem;
     }
 
@@ -301,7 +313,8 @@ header .lines f{
       justify-content: center;
       align-items: center;
       margin: auto;
-      color: #4b5563;
+      font-size:1.5rem ;
+      color: #ffffff;
       margin: 1rem 1rem;
     }
 
@@ -389,6 +402,22 @@ header .lines f{
       justify-content: center;
     }
 
+    .section button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #003057;
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+
+    .section button:hover{
+      background-color: #18354d;
+    }
+
     /* Footer----- */
 
     footer {
@@ -400,6 +429,7 @@ header .lines f{
     }
 
     /* for tablets --------------*/
+
 
     @media (max-width: 768px) {
       .body {
@@ -413,20 +443,23 @@ header .lines f{
       }
 
       .bg-circle-2 {
-        width: 50vw;
+        width: 0vw;
         height: 80vh;
+        top: 70%;
       }
 
       header {
         padding: 4rem 1rem;
       }
-header .lines f{
-  color: lightblue;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 1rem;
-}
+
+      header .lines f {
+        color: lightblue;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 1rem;
+      }
+
       nav {
         background: rgb(70, 70, 70, 0.3);
         backdrop-filter: blur(20px);
@@ -439,7 +472,7 @@ header .lines f{
         flex-direction: column;
         background: transparent;
         backdrop-filter: blur(20px);
-        background-color: rgba(45, 0, 170, 0.2);
+        background-color: var(--text);
         width: 50vw;
         gap: 2rem;
         align-items: first baseline;
@@ -521,35 +554,48 @@ header .lines f{
       .section .card {
         display: flex;
         flex-direction: column;
-        padding: 1rem 2rem;
+        justify-content: center;
+        align-items: center;
         width: 100vw;
-        border-radius: 20px;
+        overflow-x: hidden;
+        padding: 4rem 1rem;
+        margin: auto;
       }
 
-    .section .card-2 {
-      display: flex;
+      .section .card-2 {
+        display: flex;
         flex-direction: column;
-        padding: 1rem 2rem;
+        justify-content: center;
+        align-items: center;
         width: 100vw;
-        border-radius: 20px;
-    }
+        overflow-x: hidden;
+        padding: 4rem 1rem;
+        margin: auto;
+      }
 
-    .section .card-3 {
-      display: flex;
+      .section .card-3 {
+        display: flex;
         flex-direction: column;
-        padding: 1rem 2rem;
+        justify-content: center;
+        align-items: center;
         width: 100vw;
-        border-radius: 20px;
-        
-    }
-   
+        overflow-x: hidden;
+        padding: 4rem 1rem;
+        margin: auto;
+      }
+ .section button{
+  padding: 1rem 2rem;
+  font-size: 1rem;
+ }
+
       .section h2 {
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 32px;
-        margin: auto;
-        padding: 1rem 1rem;
+        margin: 0rem 1rem;
+
+        width: 90vw;
         color: wheat;
       }
 
@@ -557,18 +603,19 @@ header .lines f{
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: auto;
         color: #4b5563;
-        margin: 1rem 1rem;
+        margin: 0rem 2rem;
       }
 
       .section img {
+        justify-content: center;
         height: 30vh;
-        width: auto;
       }
 
       .section {
-        margin: 1rem 1rem;
+        margin: 4rem 0rem;
+        border-radius: 40px;
+      gap: 1rem;
       }
 
       .email-form {
@@ -599,14 +646,19 @@ header .lines f{
         height: 30vh;
         padding: 2rem 2rem;
         margin-top: 3em;
-        margin: 15rem 1rem;
+        margin: 5rem 4rem;
         top: 50%;
       }
     }
-
+    @media (max-width: 496px) {
+    header{
+      height: 110vh;
+    }
+    }
     @media (max-width: 328px) {
       header {
         padding: 4rem 1rem;
+        height: 100vh;
       }
 
       .gif {
@@ -637,6 +689,16 @@ header .lines f{
     }
 
     /* media query---- */
+    @media (min-width: 496px) and (max-width: 768px) {
+    header{
+      height: 80vh;
+    }
+    }
+    @media (min-width: 496px) {
+      .section img{
+        height: 70vh;
+      }
+    }
 
     @media (min-width: 769px) and (max-width: 1070px) {
       body {
@@ -653,17 +715,18 @@ header .lines f{
         overflow: hidden;
       }
 
-    .section .card-2 {
-      flex-direction: column;
+      .section .card-2 {
+        flex-direction: column;
         flex-wrap: wrap;
         overflow: hidden;
-    }
+      }
 
-    .section .card-3 {
-      flex-direction: column;
+      .section .card-3 {
+        flex-direction: column;
         flex-wrap: wrap;
         overflow: hidden;
-    }
+      }
+
       .section h2 {
         font-size: 2rem;
         margin-bottom: 1rem;
@@ -694,6 +757,30 @@ header .lines f{
         background: radial-gradient(circle, #00ffff, transparent);
       }
 
+    }
+
+    .slide-in-right {
+      opacity: 0;
+      transform: translateX(-25px);
+      transition: all 1s ease-out;
+    }
+
+    .slide-in-left {
+      opacity: 0;
+      transform: translateX(25px);
+      transition: all 1s ease-out;
+    }
+
+    .slide-in-bottom {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: all 1s ease-out;
+    }
+
+
+    .visible {
+      opacity: 1;
+      transform: translateY(0px);
     }
   </style>
 </head>
@@ -753,24 +840,27 @@ header .lines f{
   <div class="bg-circle-1"></div>
 
   <!-- Header----- -->
-  <header>
+  <header class="slide-in-bottom">
+
+
     <h1>Convert faster. Support smarter. Win more - with<span
-        style="color: rgb(21, 165, 255); text-shadow: 2px 2px 2px white;"> AI Catbots</span></h1>
+        style="color: rgb(21, 165, 255); text-shadow: 2px 2px 2px white;"> AI Chatbots</span></h1>
     <p>AI Chatbots can work like your best team member - <span style="font-weight: 700;">available 24/7</span>, never
       miss a lead with<span style="font-weight: 700;"> ultra-high </span>satisfaction rates.</p>
-    <form class="email-form">
+    <form class="email-form slide-in-bottom">
       <input type="email" id="email" name="email" placeholder="Enter your Business E-mail" required />
 
       <button type="submit">Sign up FREE!</button>
     </form>
-    <div class="lines">
-      <f>#14 Days free trial</f>
-      <f>no credit card needed</f>
+    <div class="lines slide-in-left">
+      <f><i class="fas fa-check" style="font-family: inherit;">14 Days free trial</i></f>
+      <f><i class="fas fa-check" style="font-family: inherit;">No credit card needed</i></f>
+
     </div>
 
   </header>
 
-  <section class="gif">
+  <section class="gif slide-in-left">
     <img src="Rehnova digitals(1).gif" alt="">
 
   </section>
@@ -779,41 +869,48 @@ header .lines f{
   <section style="background-color: rgb(0, 0, 0);">
     <div class="section" id="about">
 
-      <div class="card">
-        <img src="Untitled design(1).png" alt="" style="border: 2px solid white; padding: 2rem 2rem; border-radius: 40px; background-color: grey;">
+      <div class="card slide-in-right">
+        <img style="border: 2px solid white; padding: 1rem 1rem; border-radius: 40px; background-color: grey;"
+         src="imag.png" alt="">
         <div>
-          <h2>About Us</h2>
-          <p>REHNOVA is a future-driven automation agency offering smart SaaS tools, lead generation bots, and
-            AI-powered
-            systems for startups and enterprises.</p>
+          <h2>Support customers on multiple channels</h2>
+          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;"><p>Add an AI chatbot to your website, LiveChat, Messenger, or Slack to handle all support cases automatically,
+            24/7. </p>
+          <button type="submit">Sign up </button></div>
+
         </div>
       </div>
-      <div class="card-2">
-        <img style="border: 2px solid white; padding: 2rem 2rem; border-radius: 40px; background-color: grey;" src="Untitled design(1).png" alt="">
-        <div >
+      <div class="card-2 slide-in-left">
+        <img style="border: 2px solid white; padding: 1rem 1rem; border-radius: 40px; background-color: grey;"
+        
+          src="Untitled design(1).png" alt="">
+        <div>
 
-          <h2>Our Features</h2>
-          <p>We offer automation, real-time integrations, user analytics, and multi-platform SaaS development tailored
-            to
-            your needs.</p>
+          <h2>Show offers to boost sales</h2>
+          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;"><p>Proactively reach website visitors with product recommendations to increase engagement and conversions.
+          </p>
+          <button type="submit">Sign up </button></div>
         </div>
 
       </div>
 
-      <div class="card-3">
+      <div class="card-3 slide-in-right ">
 
-        <img style="border: 2px solid white; padding: 2rem 2rem; border-radius: 40px; background-color: grey;" src="Untitled design(1).png" alt="">
+        <img style="border: 2px solid white; padding: 1rem 1rem; border-radius: 40px; background-color: grey;"
+          src="Untitled design(1).png" alt="">
         <div>
 
 
-          <h2>Contact</h2>
-          <p>Reach out via Email, LinkedIn, or our live chatbot. We're excited to hear from you.</p>
+          <h2>Delievr on-point answers with AI automation</h2>
+          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;"><p>Ensure continuous customer engagement and human-like support without expanding your team.</p>
+          <button type="submit">Sign up</button></div>
+
         </div>
       </div>
 
     </div>
   </section>
-  <section class="more">
+  <section class="more slide-in-bottom ">
     so do contact us to have a competitive edge over the others
   </section>
   <!-- Footer----- -->
@@ -841,6 +938,22 @@ header .lines f{
         }
       });
     });
+    // Intersection animations
+
+    const slideElements = document.querySelectorAll('.slide-in-left, .slide-in-bottom, .slide-in-right')
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // Stop observing after first visibility
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+    slideElements.forEach(el => observer.observe(el));
+
   </script>
 
 </body>
